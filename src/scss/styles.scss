@@ -1,0 +1,301 @@
+@import "variables";
+@import 'fonts';
+@import 'queries';
+//Fonts
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,500,700');
+// cierre fonts
+
+/*Estilos Generales*/
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -ms-font-smoothing: antialiased;
+    -o-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Raleway', Helvetica, Arial, sans-serif;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    background-color: $bkg-color-box-b;
+}
+h3{
+    text-align: center;
+    margin-top: 7px;
+}
+h4 {
+    font-size: 1em;
+}
+
+p {
+    font-size: 14px;
+}
+.send{
+    background-image:url(../img/plane.svg); 
+    background-repeat: no-repeat; 
+    background-position: 42px 9px;
+    background-size: 21px;
+    margin: 0 auto;
+    padding: 6px 4px 6px 16px;
+    margin-top: 20px;
+}
+.btn-close{
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    cursor: pointer;
+    width: 29px;
+    border: 2px solid #bbbbbb;
+    border-radius: 192px;
+    padding: 4px 1px!important;
+    background-color: #ffffff;
+    transition: all 0.7s ease;
+    &:hover {
+        background-color: #d2d2d2;
+    } 
+    
+}
+.avatar {
+    display: inline-block;
+    width: 60px;
+    vertical-align: top;
+    border-radius: 173px;
+    border: 2px solid rgba(255, 152, 0, 0);
+    transition: all 0.7s ease;
+}
+.hover-avatar{
+    border: 2px solid $color-primary;
+}
+
+.line {
+    height: 4px;
+    width: 100px;
+    background-color: $color-primary;
+}
+
+.container {
+    padding: 2px 0px;
+    clear: both;
+}
+.block{
+    height: 189px;
+    transition: all 0.7s ease;
+    box-shadow: 0 0 0 rgba(0,0,0,0.3);
+    cursor: pointer;
+    &:hover {
+        transform: translateY(-15%);
+        box-shadow: 0 19px 19px rgba(0,0,0,0.3);
+    }
+    @include media(xss) {
+        height: 200px;
+    }
+    @include media(xs) {
+        height: 200px;
+    }
+}
+.block-gray {
+    @extend .block;
+    background-color: $bkg-color-box-a;  
+}
+
+.block-white {
+    @extend .block;
+    background-color:$bkg-color-box-b;
+}
+.border-top{
+    border-top: 3px solid $color-primary;
+}
+
+//grid
+$numero-columnas: 6;
+$grilla: 768px;
+[class*='col-'] {
+    float: left;
+    padding: 0.8em;
+    width: 100%;
+}
+
+@mixin grilla {
+    @media only screen and(min-width: #{$grilla}) {
+        @content;
+    }
+}
+
+@include grilla {
+    @for $i from 1 through $numero-columnas {
+        .col-#{$i} {
+            width: 100% / $numero-columnas * $i;
+        }
+    }
+}
+
+//CIERRE grid
+
+.center-element {
+    margin: 0 auto;
+    display: block;
+}
+
+.btn {
+    background-color: $color-primary;
+    border: 1px solid darken( $color-primary, 20%);
+    color: white;
+    width: 181px;
+    padding: 6px 4px;
+    text-align: center;
+    display: block;
+    text-transform: capitalize;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 700;
+    transition: all 0.7s ease;
+    cursor: pointer;
+    &:hover,
+    &:active {
+        background-color: darken( $color-primary, 20%);
+    }
+}
+
+// ESTRUCTURA WEB *******************************************************************
+//***********************************************************************************
+
+section.modal-content {
+    display: none;
+    width: 100%;
+    height: 100%;
+    clear: both;
+    position: relative;
+    box-shadow: 0 0 20px 1000px rgba(255, 255, 255, 0.9);
+    z-index: 2;
+    
+    .modal-form {
+        width: 50%;
+        max-width: 630px;
+        min-width: 250px;
+        overflow: auto;
+        margin: auto;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background-color: #FCFCFC;
+        padding: 14px;
+        box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.3);
+        img {
+            padding: 6px 0px 5px 0px;
+        }
+    }
+    form {
+        .wrapper-form {
+            p {
+                text-align: left;
+                padding: 20px 0px 5px 0px;
+                font-weight: 700;
+            }
+            .item-form {
+                display: inline-block;
+                width: 100%;
+                border: 1px solid #ccc;
+                vertical-align: middle;
+                text-align: left;
+                background-color: #ffffff;
+                -webkit-border-radius: 3px;
+                -moz-border-radius: 3px;
+                border-radius: 3px;
+                overflow: hidden;
+                height: 40px;
+                span {
+                    vertical-align: middle;
+                    border-right: 1px solid #CCC;
+                    padding: 26px 9px;
+                    text-align: left;
+                    background-color: #FFFFFF;
+                    img {
+                        width: 30px;
+                    }
+                }
+                input {
+                    border: none;
+                    background-color: #ffffff;
+                    vertical-align: text-bottom;
+                    font-weight: 400;
+                    font-size: 13px;
+                    letter-spacing: 0.3px;
+                    width: 85%;
+                    height: 30px;
+                    margin-bottom: 3px;
+                    height: 30px;
+                    @include media(xss) {
+                        width: 40%;
+                    }
+                    @include media(xs) {
+                        width: 60%;
+                    }
+                }
+            }
+        }
+        a {
+            width: 181px;
+            margin: 0 auto;
+            margin-top: 23px;
+            span.icon {
+                img {
+                    width: 23px;
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+}
+
+header {
+    center {
+        img.center-element {
+            padding: 30px;
+        }
+        h1 {
+            color: black;
+            font-size: 1.8em;
+        }
+        div.line {
+            margin: 20px 0px;
+        }
+        a {
+            margin: 0 auto;
+            margin-bottom: 30px;
+            span {
+                img {}
+            }
+        }
+    }
+}
+
+.container {
+    div {
+        h4 {}
+        p {}
+    }
+    div {
+        article {
+            display: inline-block;
+            width: 70%;
+            margin-top: 10%;
+            h4 {padding: 5px 0px;}
+            p {}
+        }
+    }
+}
+
+// CIERRE ESTRUCTURA WEB *******************************************************************
+//***********************************************************************************
